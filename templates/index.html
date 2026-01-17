@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Word Similarity API</title>
+    <style>
+      /* General reset */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        height: 100%;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        flex-direction: column;
+        background: #f4f6f8;
+      }
+
+      main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 50px 20px;
+      }
+
+      h2 {
+        color: #2c3e50;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      form#similarForm {
+        background: #fff;
+        padding: 30px 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 300px;
+      }
+
+      label {
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      input,
+      select {
+        padding: 8px 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 1em;
+        width: 100%;
+      }
+
+      button {
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+        background-color: #2980b9;
+        color: white;
+        font-size: 1em;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #1c5980;
+      }
+
+      h3 {
+        margin-top: 40px;
+        color: #2c3e50;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 80%;
+        max-width: 600px;
+        margin-top: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      th,
+      td {
+        padding: 12px 15px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #2980b9;
+        color: white;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      tr:hover {
+        background-color: #d1e6f7;
+      }
+
+      #footer {
+        font-size: 0.9em;
+        color: #555;
+        text-align: center;
+        padding: 15px 10px;
+        background-color: #ecf0f1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+      }
+
+      #footer a {
+        color: #2980b9;
+        text-decoration: none;
+      }
+
+      #footer a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 650px) {
+        table,
+        form#similarForm {
+          width: 90%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h2>Word Similarity Search</h2>
+
+      <form id="similarForm">
+        <div>
+          <label for="word">Word:</label>
+          <input type="text" id="word" name="word" required />
+        </div>
+        <div>
+          <label for="model">Model:</label>
+          <select id="model" name="model">
+            <option value="skipgram">Skip-gram</option>
+            <option value="neg">Skip-gram NEG</option>
+            <option value="glove">GloVe</option>
+          </select>
+        </div>
+
+        <button type="submit">Find Similar Words</button>
+      </form>
+
+      <h3>Top 10 Similar Words:</h3>
+      <table id="resultsTable" style="display: none">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Word</th>
+            <th>Similarity Score</th>
+          </tr>
+        </thead>
+        <tbody id="resultsBody"></tbody>
+      </table>
+    </main>
+
+    <div id="footer">
+      <p>Submitted by: st126686</p>
+      <a href="https://github.com/bajratisa/NLP_assignment" target="_blank"
+        >GitHub Repository</a
+      >
+    </div>
+
+    <script>
+      const form = document.getElementById("similarForm");
+      const resultsTable = document.getElementById("resultsTable");
+      const resultsBody = document.getElementById("resultsBody");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const word = document.getElementById("word").value;
+        const model = document.getElementById("model").value;
+
+        const response = await fetch(`/similar?word=${word}&model=${model}`);
+        const data = await response.json();
+
+        resultsBody.innerHTML = "";
+
+        if (data.error) {
+          resultsTable.style.display = "none";
+          alert("Error: " + data.error);
+        } else {
+          resultsTable.style.display = "table";
+          data.top_10.forEach((item, index) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                        <td>${index + 1}</td>
+                        <td>${item.word}</td>
+                        <td>${item.score}</td>
+                    `;
+            resultsBody.appendChild(row);
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
