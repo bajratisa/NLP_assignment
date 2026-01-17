@@ -28,6 +28,10 @@ Install dependencies:
 ```bash
 pip install flask numpy pandas torch
 
+# To run the app
+- Open new terminal
+- Run `python app.py`
+- Go to `http://127.0.0.1:5000/` on the browser of your choice
 
 NLP-word-similarity/
 │
