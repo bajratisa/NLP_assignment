@@ -67,12 +67,16 @@ def generate_text(prompt, max_seq_len, temperature, model, vocab, device):
             probs = torch.softmax(prediction[:, -1] / temperature, dim=-1)  
             prediction = torch.multinomial(probs, num_samples=1).item()    
             
-            if prediction == vocab['<eos>']: 
-                break
+            
             indices.append(prediction)
 
     itos = vocab.get_itos()
-    return " ".join([itos[i] for i in indices])
+    
+    # --- Filter out <unk> and <eos> tokens ---
+    
+    result_tokens = [itos[i] for i in indices if itos[i] != '<unk>' and itos[i] != '<eos>']
+    
+    return " ".join(result_tokens)
 
 # --- 4. Dash App Configuration ---
 app = Dash(__name__)
