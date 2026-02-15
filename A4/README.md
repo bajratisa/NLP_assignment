@@ -27,14 +27,17 @@ The model processes both sentences and predicts their relationship label:
 ## Sample Classification Report
 As part of the evaluation step, the model generates a performance metric report based on the NLI task. Below is the sample format of the classification report evaluated in this project:
 
-|               | precision | recall | f1-score | support |
-|---------------|-----------|--------|----------|---------|
-| entailment    | 0.42      | 0.02   | 0.05     | 3486    |
-| neutral       | 0.33      | 0.75   | 0.46     | 3199    |
-| contradiction | 0.33      | 0.25   | 0.28     | 3315    |
-| accuracy      |           |        | 0.33     | 10000   |
-| macro avg     | 0.36      | 0.34   | 0.26     | 10000   |
-| weighted avg  | 0.36      | 0.33   | 0.26     | 10000   |
+## Classification Report
+
+| Class          | Precision | Recall | F1-Score | Support |
+|----------------|----------:|-------:|---------:|--------:|
+| Entailment     | 0.61      | 0.75   | 0.68     | 3368    |
+| Neutral        | 0.62      | 0.63   | 0.63     | 3219    |
+| Contradiction  | 0.69      | 0.51   | 0.59     | 3237    |
+| Accuracy       |           |        | 0.63     | 9824    |
+| Macro Avg      | 0.64      | 0.63   | 0.63     | 9824    |
+| Weighted Avg   | 0.64      | 0.63   | 0.63     | 9824    |
+
 
 ## How to Run the Project
 
