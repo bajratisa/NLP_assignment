@@ -1,5 +1,5 @@
-A5/A5_env/
-A5/dpo_qwen_output/
-A5/qwen-dpo-final/
+A5_env
+dpo_qwen_output
+qwen-dpo-final
 *.pt
 *.safetensors
