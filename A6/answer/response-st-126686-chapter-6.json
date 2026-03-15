@@ -1,0 +1,122 @@
+[
+    {
+        "question": "What is a neural network?",
+        "ground_truth_answer": "A neural network is a network of small computing units, each of which takes a vector of input values and produces a single output value.",
+        "naive_rag_answer": "A neural network is a network of small computing units, each of which takes a vector of input values and produces a single output value.",
+        "contextual_retrieval_answer": "A neural network is a complex system composed of interconnected units or nodes, which are the building blocks of the network. These units take input values, perform computations, and produce an output. The power of neural networks comes from the ability of early layers to learn representations that can be utilized by later layers in the network."
+    },
+    {
+        "question": "What is a bias term in a neural unit?",
+        "ground_truth_answer": "A bias term is an additional term added to the weighted sum of inputs in a neural unit, represented as b in the equation z = w·x + b.",
+        "naive_rag_answer": "A bias term in a neural unit is an additional term in the sum that is added to the weighted sum of the inputs. It is represented as a weight for an input clamped at +1.",
+        "contextual_retrieval_answer": "A bias term in a neural unit is an additional term in the sum that is used to shift the output of the unit. It is a scalar value that is added to the weighted sum of the inputs. In the notation used in the provided text, the bias term is represented as 'b'."
+    },
+    {
+        "question": "What is the sigmoid activation function?",
+        "ground_truth_answer": "The sigmoid function is a non-linear activation function defined as y = 1/(1+e^-z) that maps output values into the range (0,1).",
+        "naive_rag_answer": "The sigmoid activation function is defined as:\n\ny = σ(z) = 1 / (1 + e^(-z))\n\nor equivalently:\n\ny = σ(z) = 1 / (1 + e^(-w · x + b))\n\nwhere w is the weight vector, x is the input vector, and b is the bias.",
+        "contextual_retrieval_answer": "The sigmoid activation function is a non-linear function that maps the output into the range (0,1). It is defined as:\n\ny = σ(z) = 1 / (1 + e^(-z))\n\nwhere e is the base of the natural logarithm. The sigmoid function has a number of advantages, including mapping the output into the range (0,1), which is useful in squashing outliers toward 0 or 1, and being differentiable, which is handy for learning."
+    },
+    {
+        "question": "What is the ReLU activation function?",
+        "ground_truth_answer": "ReLU stands for Rectified Linear Unit and is defined as y = max(z,0). It is the simplest and perhaps most commonly used activation function.",
+        "naive_rag_answer": "The ReLU (Rectified Linear Unit) activation function is defined as: \n\ny = ReLU(z) = max(z,0)\n\nIt's the same as z when z is positive, and 0 otherwise.",
+        "contextual_retrieval_answer": "The ReLU (Rectified Linear Unit) activation function is defined as y = ReLU(z) = max(z,0), where it returns the same value as z when z is positive, and 0 otherwise."
+    },
+    {
+        "question": "What is the tanh activation function?",
+        "ground_truth_answer": "The tanh function is a variant of the sigmoid that ranges from -1 to +1, defined as y = (e^z - e^-z)/(e^z + e^-z).",
+        "naive_rag_answer": "The tanh activation function, also known as the hyperbolic tangent function, is a variant of the sigmoid function that ranges from -1 to +1. It is defined as:\n\ny = tanh(z) = ez − e−z / (ez + e−z)\n\nThis function maps the input z to a value between -1 and 1, making it useful for certain applications and network architectures.",
+        "contextual_retrieval_answer": "The tanh activation function, also known as the hyperbolic tangent function, is a variant of the sigmoid function that ranges from -1 to +1. It is defined as:\n\ny = tanh(z) = e^z - e^(-z) / (e^z + e^(-z))\n\nThis function maps the input z to a value between -1 and 1, making it useful for certain language applications or network architectures."
+    },
+    {
+        "question": "What is the vanishing gradient problem?",
+        "ground_truth_answer": "The vanishing gradient problem occurs when gradients become almost zero during backpropagation, causing the error signal to get smaller and smaller until it is too small to be used for training.",
+        "naive_rag_answer": "The vanishing gradient problem is a problem that occurs during the training of neural networks, particularly when using certain types of activation functions, such as those that are saturated or extremely close to 1. This causes the derivatives of the activation function to be very close to 0, which in turn causes the error signal to get smaller and smaller as it is propagated backwards through the network, making it difficult to use for training.",
+        "contextual_retrieval_answer": "The vanishing gradient problem is a challenge associated with training neural networks. It occurs when gradients (partial derivatives) from each layer of the network are multiplied together during the backpropagation process. If the gradients are very close to 0, they cause the error signal to get smaller and smaller until it is too small to be used for training. This problem is particularly prevalent when using activation functions that saturate, such as the sigmoid function, which has derivatives very close to 0 for high values of z."
+    },
+    {
+        "question": "Why can't a single perceptron compute XOR?",
+        "ground_truth_answer": "A single perceptron cannot compute XOR because XOR is not a linearly separable function. A perceptron is a linear classifier and cannot draw a single line to separate the positive and negative cases of XOR.",
+        "naive_rag_answer": "A single perceptron cannot compute XOR because it is a linear classifier. The perceptron equation, w1x1 + w2x2 + b = 0, is the equation of a line. This means that a single perceptron can only separate data points into two categories by drawing a line between them. However, as shown in the truth table for XOR, there is no way to draw a line that correctly separates the two categories for XOR.",
+        "contextual_retrieval_answer": "A single perceptron cannot compute XOR because it is a linear classifier. The perceptron equation, w1x1 + w2x2 + b = 0, is the equation of a line. This means that a single perceptron can only separate data points into two categories by drawing a line between them, but it cannot separate data points into two categories when the boundary between them is not a straight line, such as in the case of the XOR function."
+    },
+    {
+        "question": "What is a feedforward neural network?",
+        "ground_truth_answer": "A feedforward network is a multilayer network in which units are connected with no cycles. Outputs from units in each layer are passed to units in the next higher layer, and no outputs are passed back to lower layers.",
+        "naive_rag_answer": "A feedforward neural network is a type of supervised machine learning instance where we know the correct output y for each observation x. It's a multilayer network in which the units are connected with no cycles, and the outputs from units in each layer are passed to units in the next higher layer, with no outputs passed back to lower layers.",
+        "contextual_retrieval_answer": "A feedforward neural network is an instance of supervised machine learning in which we know the correct output y for each observation x. It's a type of neural network where the computation proceeds iteratively from one layer of units to the next, without any feedback loops. This means that the output of each layer is only used to compute the output of the next layer, and not fed back into previous layers."
+    },
+    {
+        "question": "What does fully-connected mean in a neural network?",
+        "ground_truth_answer": "Fully-connected means that each unit in each layer takes as input the outputs from all the units in the previous layer, and there is a link between every pair of units from two adjacent layers.",
+        "naive_rag_answer": "In a neural network, \"fully-connected\" means that each unit in a layer is connected to every unit in the previous layer. This results in each hidden unit summing over all the input units.",
+        "contextual_retrieval_answer": "In a neural network, \"fully-connected\" means that each unit in a layer is connected to every unit in the previous layer. This implies that each unit in a layer takes as input the outputs from all the units in the previous layer, and there is a link between every pair of units from two adjacent layers."
+    },
+    {
+        "question": "What is the softmax function?",
+        "ground_truth_answer": "The softmax function normalizes a vector of real values into a probability distribution where all numbers lie between 0 and 1 and sum to 1. It is defined as softmax(zi) = exp(zi) / sum(exp(zj)).",
+        "naive_rag_answer": "The softmax function is defined as: \n\nsoftmax(zi) = exp(zi) / Pd j=1 exp(z j) \n\nwhere z is a vector of dimensionality d, and 1 ≤i ≤d. This function is used to normalize a vector of real-valued numbers into a probability distribution, where all numbers lie between 0 and 1 and sum to 1.",
+        "contextual_retrieval_answer": "The softmax function is a mathematical representation that takes a vector of real-valued numbers and normalizes it to a probability distribution, where all the numbers lie between 0 and 1 and sum to 1. It is defined as:\n\nsoftmax(zi) = exp(zi) / Pd j=1 exp(z j)\n\nwhere z is a vector of dimensionality d. The softmax function is used in classification tasks to create a probability distribution over the classes."
+    },
+    {
+        "question": "What is an embedding matrix?",
+        "ground_truth_answer": "An embedding matrix E is a dictionary of static embeddings where each row represents a token of the vocabulary as a vector of dimensionality d. It has shape [|V| x d] where |V| is the vocabulary size.",
+        "naive_rag_answer": "An embedding matrix is a dictionary of static embeddings in which we store the learned embeddings for all the input tokens. It is a matrix where each row represents each token of the vocabulary V as a (row) vector of dimensionality d. The embedding matrix E has a row for each of the |V| tokens in the vocabulary, and it has a shape of [|V| × d].",
+        "contextual_retrieval_answer": "An embedding matrix is a dictionary of static embeddings that stores the learned embeddings for all the input tokens. It is a matrix where each row represents each token of the vocabulary V as a (row) vector of dimensionality d."
+    },
+    {
+        "question": "What is mean pooling?",
+        "ground_truth_answer": "Mean pooling is a method to combine multiple embeddings into a single embedding by summing all the embeddings and dividing by the number of tokens N.",
+        "naive_rag_answer": "Mean pooling is a way to turn a set of embeddings into a single embedding. It is done by summing the embeddings and then dividing by the number of embeddings (N). The formula for mean pooling is:\n\nxmean = 1/N N X i=1 e(wi)\n\nWhere e(wi) is the embedding of the ith word, and N is the total number of words.",
+        "contextual_retrieval_answer": "Mean pooling is a way to turn a set of embeddings into a single embedding. It is done by summing the embeddings and then dividing by the number of embeddings (N). The formula for mean pooling is:\n\nxmean = 1/N N X i=1 e(wi)\n\nwhere xmean is the mean-pooled embedding, N is the number of embeddings, and e(wi) is the ith embedding."
+    },
+    {
+        "question": "What is the cross-entropy loss function?",
+        "ground_truth_answer": "The cross-entropy loss function is defined as the negative log of the output probability corresponding to the correct class, also called the negative log likelihood loss.",
+        "naive_rag_answer": "The cross-entropy loss function is given by the equation:\n\nLCE(ˆy,y) = −[ylog ˆy+(1−y)log(1−ˆy)]\n\nThis can be simplified further to:\n\nLCE(ˆy,y) = − K X k=1 1{yk = 1}log ˆyk\n\nWhere it is more obvious that the terms in the sum will be 0 except for the term corresponding to the true class for which yk = 1.",
+        "contextual_retrieval_answer": "The cross-entropy loss function is given by two equations:\n\n1. For binary classification with sigmoid output:\n   LCE(ˆy,y) = −[ylog ˆy+(1−y)log(1−ˆy)] (6.25)\n\n2. For multi-class classification (3 or more classes):\n   LCE(ˆy,y) = − K X k=1 1{yk = 1}log ˆyk \n\nwhere ˆy is the predicted output, y is the true output, and K is the number of classes."
+    },
+    {
+        "question": "What is error backpropagation?",
+        "ground_truth_answer": "Error backpropagation is an algorithm used to compute the gradients of the loss function for a neural network by passing gradients back from the final node to all nodes in the computation graph.",
+        "naive_rag_answer": "Error backpropagation, also known as backprop, is an algorithm used to compute the gradients of the loss function for a network. It is a procedure that allows us to compute the partial derivative of a weight in an early layer of a neural network with respect to the loss, even though the loss is computed at a later layer. This algorithm is used to compute the gradients needed for optimization algorithms like gradient descent to learn the weights of the network.",
+        "contextual_retrieval_answer": "Error backpropagation, also known as backprop (Rumelhart et al., 1986), is an algorithm used to compute the partial derivative of the loss function with respect to the weight parameters in a neural network, even when the loss is computed only at the very end of the network. This algorithm is crucial for training neural networks and allows them to learn useful representations of the input automatically."
+    },
+    {
+        "question": "What is a computation graph?",
+        "ground_truth_answer": "A computation graph is a representation of the process of computing a mathematical expression, where the computation is broken down into separate operations each modeled as a node in a graph.",
+        "naive_rag_answer": "A computation graph is a representation of the process of computing a mathematical expression, in which the computation is broken down into separate operations, each of which is modeled as a node in a graph.",
+        "contextual_retrieval_answer": "A computation graph is a representation of the process of computing a mathematical expression, in which the computation is broken down into separate operations, each of which is modeled as a node in a graph."
+    },
+    {
+        "question": "What is dropout in neural networks?",
+        "ground_truth_answer": "Dropout is a regularization technique that randomly drops some units and their connections from the network during training to prevent overfitting.",
+        "naive_rag_answer": "Dropout is a technique used in neural networks to prevent overfitting. It involves randomly dropping some units and their connections from the network during training. At each iteration of training, a probability p is chosen, and for each unit, its output is replaced with zero with probability p, while the rest of the outputs from that layer are renormalized. This helps to prevent the network from becoming too specialized to the training data and improves its generalization performance.",
+        "contextual_retrieval_answer": "Dropout is a technique used in neural networks to prevent overfitting. It involves randomly dropping some units and their connections from the network during training. At each iteration of training, a probability p is chosen, and for each unit, its output is replaced with zero with probability p, and the rest of the outputs from that layer are renormalized. This helps to prevent the network from becoming too specialized to the training data and improves its generalization to new, unseen data."
+    },
+    {
+        "question": "What are hyperparameters in neural networks?",
+        "ground_truth_answer": "Hyperparameters are values chosen by the algorithm designer rather than learned by gradient descent. They include learning rate, mini-batch size, number of layers, number of hidden nodes, and choice of activation functions.",
+        "naive_rag_answer": "Hyperparameters in neural networks are the parameters that are chosen by the algorithm designer, rather than being learned by the network itself. These include the learning rate, mini-batch size, model architecture, and other parameters that are not learned by gradient descent. Optimal values for hyperparameters are typically tuned on a devset rather than being learned on the training set.",
+        "contextual_retrieval_answer": "Hyperparameters in neural networks are the parameters that are chosen by the algorithm designer, as opposed to the parameters that are learned by the network itself. These include the learning rate η, the mini-batch size, the model architecture (the number of layers, the number of units in each layer, etc.), and other parameters that are not learned by gradient descent. Optimal values for these hyperparameters are typically tuned on a devset rather than by gradient descent learning on the training set."
+    },
+    {
+        "question": "What is the difference between parameters and hyperparameters?",
+        "ground_truth_answer": "Parameters are the weights W and biases b that are learned by gradient descent during training. Hyperparameters are design choices like learning rate and number of layers that are tuned on a development set.",
+        "naive_rag_answer": "According to the given context, the difference between parameters and hyperparameters is as follows:\n\n- Parameters are the weights W and biases b of a neural network, which are learned by gradient descent.\n- Hyperparameters, on the other hand, are chosen by the algorithm designer and include things like the learning rate η, the mini-batch size, and the model architecture. Optimal values of hyperparameters are tuned on a devset rather than by gradient descent learning on the training set.",
+        "contextual_retrieval_answer": "According to the provided context, the difference between parameters and hyperparameters is as follows:\n\n- Parameters are the weights W and biases b, which are learned by the algorithm through gradient descent.\n- Hyperparameters, on the other hand, are chosen by the algorithm designer and are not learned by the algorithm. They include the learning rate η, the mini-batch size, the model architecture, and other such settings. Optimal values for hyperparameters are typically tuned on a devset rather than being learned by gradient descent on the training set."
+    },
+    {
+        "question": "What is a one-hot vector?",
+        "ground_truth_answer": "A one-hot vector is a vector where all elements are 0 except one element whose dimension corresponds to the word index in the vocabulary, which has value 1.",
+        "naive_rag_answer": "A one-hot vector is a vector with one value equal to 1 and the rest 0. It is used to represent a specific element or class, with the 1 indicating the selected element and the 0s indicating all other elements. For example, if the word \"dessert\" has index 3 in the vocabulary, its one-hot vector would be [0 0 1 0 0 0 0 ... 0 0 0 0].",
+        "contextual_retrieval_answer": "A one-hot vector is a vector with one value equal to 1 and the rest 0. It is used to represent a class or a category, where the position of the 1 indicates the class or category being represented. For example, if we have a vocabulary of words and we want to represent the word \"dessert\", a one-hot vector for this word would have a 1 in the 4th position (since \"dessert\" has index 3 in the vocabulary, but the vector is 0-indexed) and 0s in all other positions."
+    },
+    {
+        "question": "What is the chain rule in backpropagation?",
+        "ground_truth_answer": "The chain rule states that the derivative of a composite function f(x) = u(v(x)) is the derivative of u with respect to v times the derivative of v with respect to x. It is used in backpropagation to compute gradients across multiple layers.",
+        "naive_rag_answer": "The chain rule in backpropagation is used to compute the gradients of the loss function for a network. It involves multiplying the local gradient (the gradient of the output with respect to the input) by the upstream gradient to compute a downstream gradient to be passed on to the next earlier node. This process is repeated along each edge of the graph from right to left, using the chain rule to compute the partial derivatives of the loss function with respect to the inputs.",
+        "contextual_retrieval_answer": "The chain rule in backpropagation is a mathematical concept used to compute the derivatives of the loss function with respect to the inputs of a neural network. It is based on the idea of breaking down the computation of the derivative into smaller components, using the derivatives of each component to compute the overall derivative.\n\nIn the context of backpropagation, the chain rule is used to compute the derivatives of the loss function with respect to the weights and biases of the network. The chain rule states that the derivative of a composite function f(x) = u(v(x)) is the derivative of u(x) with respect to v(x) times the derivative of v(x) with respect to x:\n\nd f dx = du dv · dv dx\n\nThis concept is extended to more than two functions, allowing us to compute the derivatives of the loss function with respect to the inputs of the network, even if the loss function is computed only at the end of the network.\n\nIn the context of the provided text, the chain rule is used in equations 6.31, 6.33, 6.34, and 6.43 to compute the derivatives of the loss function with respect to the inputs of the network."
+    }
+]
