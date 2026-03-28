@@ -154,10 +154,4 @@ Publish the workflow.
 - The ngrok URL changes every time you restart ngrok on the free plan. Update your `.env` file and restart n8n whenever this happens using `docker compose restart n8n`.
 - The MCP Server workflow must be running (Execute workflow) for the AI Agent to use MCP tools.
 - Make sure the Telegram webhook is registered with the correct ngrok URL.
-=======
-This repository contains all of my Natural Language Processing (NLP) assignments for my university course.
 
-I will be uploading all my NLP assignments here throughout the semester. Each assignment will include the required code, explanations, and any necessary files.
-
-This repository is created for academic purposes only.
->>>>>>> 293e6f27d2752572f0a4d5cd7dc24065acd16cee
