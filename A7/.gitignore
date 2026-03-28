@@ -1,0 +1,10 @@
+# Environment variables 
+.env
+
+# Docker volume data
+postgres_data/
+n8n_data/
+
+# System files
+.DS_Store
+Thumbs.db
