@@ -1,6 +1,6 @@
 # Natural Language Processing Assignments
 
-Coursework for AT82.xx Natural Language Processing at the Asian Institute of Technology, [Semester, Year].
+Coursework for AT82.05	Artificial Intelligence: Natural Language Understanding at the Asian Institute of Technology, January 2026.
 
 Seven assignments that go from word embeddings to LLM agents. Most of the models are built from scratch in PyTorch, and each assignment comes with a small web app for trying it out.
 
